@@ -1,0 +1,49 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Happy Birthday Pari</title>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      height: 100vh;
+      background: linear-gradient(to top, #ffdee9, #b5fffc);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Segoe UI', sans-serif;
+    }
+    .balloon {
+      position: absolute;
+      bottom: -100px;
+      width: 50px;
+      height: 70px;
+      background-color: pink;
+      border-radius: 50% 50% 45% 45%;
+      animation: float 10s infinite ease-in;
+    }
+    @keyframes float {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-110vh); }
+    }
+    h1 {
+      font-size: 2em;
+      color: #444;
+      z-index: 2;
+      position: relative;
+    }
+  </style>
+</head>
+<body>
+  <audio autoplay loop>
+    <source src="soft.mp3" type="audio/mp3">
+  </audio>
+  <h1>🎈 Happy Birthday Pari! 🎈</h1>
+  <div class="balloon" style="left:20%; animation-delay: 0s;"></div>
+  <div class="balloon" style="left:40%; background-color: #fbb1bd; animation-delay: 2s;"></div>
+  <div class="balloon" style="left:60%; background-color: #ffc0cb; animation-delay: 4s;"></div>
+</body>
+</html>
