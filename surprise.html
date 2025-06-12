@@ -1,0 +1,60 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Surprise!</title>
+  <style>
+    body {
+      background-color: #ffe4f0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      height: 100vh;
+      font-family: 'Segoe UI', sans-serif;
+      text-align: center;
+    }
+    #countdown {
+      font-size: 3em;
+      margin-bottom: 20px;
+    }
+    #message, #cake, audio {
+      display: none;
+    }
+    #cake {
+      width: 300px;
+      margin: 20px auto;
+    }
+  </style>
+</head>
+<body>
+  <div id="countdown">15</div>
+  <img id="cake" src="cake.jpg" alt="Cake"/>
+  <h1 id="message">🎂 Happy Birthday Pari! 🥳<br>I hope your day is as amazing as your smile.</h1>
+  <audio id="music" autoplay>
+    <source src="happy.mp3" type="audio/mp3">
+  </audio>
+
+  <script>
+    let timeLeft = 15;
+    const countdownEl = document.getElementById("countdown");
+    const cake = document.getElementById("cake");
+    const message = document.getElementById("message");
+    const music = document.getElementById("music");
+
+    const timer = setInterval(() => {
+      timeLeft--;
+      countdownEl.textContent = timeLeft;
+      if (timeLeft === 0) {
+        clearInterval(timer);
+        countdownEl.style.display = "none";
+        cake.style.display = "block";
+        message.style.display = "block";
+        music.play();
+      }
+    }, 1000);
+  </script>
+</body>
+</html>
