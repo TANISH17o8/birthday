@@ -29,6 +29,7 @@
       font-size: 2rem;
       color: #4caf50;
       margin-top: 30px;
+      line-height: 1.5;
     }
 
     #cake {
@@ -43,28 +44,32 @@
 <body>
   <div id="countdown">15</div>
   <img id="cake" src="cake.jpg" alt="Cake" />
-  <div id="message">Happy Birthday Pari! 🎂🥳<br>I hope your day is as amazing as your smile.</div>
+  <div id="message">🎉 Happy Birthday Pari! 🎂🥳<br>I hope your day is as amazing as your smile.</div>
 
-  <audio id="birthday-music" src="happy.mp3"></audio>
+  <audio id="birthday-music" src="happy.mp3" preload="auto"></audio>
 
   <script>
-    let count = 15;
-    const countdownElement = document.getElementById("countdown");
-    const message = document.getElementById("message");
-    const cake = document.getElementById("cake");
-    const music = document.getElementById("birthday-music");
+    window.onload = function () {
+      let count = 15;
+      const countdownElement = document.getElementById("countdown");
+      const message = document.getElementById("message");
+      const cake = document.getElementById("cake");
+      const music = document.getElementById("birthday-music");
 
-    const interval = setInterval(() => {
-      count--;
       countdownElement.textContent = count;
-      if (count === 0) {
-        clearInterval(interval);
-        countdownElement.style.display = "none";
-        cake.style.display = "block";
-        message.style.display = "block";
-        music.play();
-      }
-    }, 1000);
+
+      const interval = setInterval(() => {
+        count--;
+        countdownElement.textContent = count;
+        if (count === 0) {
+          clearInterval(interval);
+          countdownElement.style.display = "none";
+          cake.style.display = "block";
+          message.style.display = "block";
+          music.play();
+        }
+      }, 1000);
+    };
   </script>
 </body>
 </html>
