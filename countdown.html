@@ -1,49 +1,70 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Happy Birthday Pari</title>
+  <title>Surprise!</title>
   <style>
     body {
       margin: 0;
-      overflow: hidden;
-      height: 100vh;
-      background: linear-gradient(to top, #ffdee9, #b5fffc);
+      padding: 0;
+      background: linear-gradient(to top left, #ffe0f7, #d0f0ff);
       display: flex;
-      align-items: center;
       justify-content: center;
-      font-family: 'Segoe UI', sans-serif;
+      align-items: center;
+      flex-direction: column;
+      height: 100vh;
+      font-family: 'Comic Sans MS', cursive;
+      text-align: center;
     }
-    .balloon {
-      position: absolute;
-      bottom: -100px;
-      width: 50px;
-      height: 70px;
-      background-color: pink;
-      border-radius: 50% 50% 45% 45%;
-      animation: float 10s infinite ease-in;
+
+    #countdown {
+      font-size: 5rem;
+      color: #ff4081;
+      margin-bottom: 20px;
     }
-    @keyframes float {
-      0% { transform: translateY(0); }
-      100% { transform: translateY(-110vh); }
+
+    #message {
+      display: none;
+      font-size: 2rem;
+      color: #4caf50;
+      margin-top: 30px;
     }
-    h1 {
-      font-size: 2em;
-      color: #444;
-      z-index: 2;
-      position: relative;
+
+    #cake {
+      display: none;
+      width: 250px;
+      margin-top: 20px;
+      border-radius: 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
     }
   </style>
 </head>
 <body>
-  <audio autoplay loop>
-    <source src="soft.mp3" type="audio/mp3">
-  </audio>
-  <h1>🎈 Happy Birthday Pari! 🎈</h1>
-  <div class="balloon" style="left:20%; animation-delay: 0s;"></div>
-  <div class="balloon" style="left:40%; background-color: #fbb1bd; animation-delay: 2s;"></div>
-  <div class="balloon" style="left:60%; background-color: #ffc0cb; animation-delay: 4s;"></div>
+  <div id="countdown">15</div>
+  <img id="cake" src="cake.jpg" alt="Cake" />
+  <div id="message">Happy Birthday Pari! 🎂🥳<br>I hope your day is as amazing as your smile.</div>
+
+  <audio id="birthday-music" src="happy.mp3"></audio>
+
+  <script>
+    let count = 15;
+    const countdownElement = document.getElementById("countdown");
+    const message = document.getElementById("message");
+    const cake = document.getElementById("cake");
+    const music = document.getElementById("birthday-music");
+
+    const interval = setInterval(() => {
+      count--;
+      countdownElement.textContent = count;
+      if (count === 0) {
+        clearInterval(interval);
+        countdownElement.style.display = "none";
+        cake.style.display = "block";
+        message.style.display = "block";
+        music.play();
+      }
+    }, 1000);
+  </script>
 </body>
 </html>
