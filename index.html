@@ -1,8 +1,4 @@
 <body>
-  <audio autoplay loop>
-    <source src="soft.mp3" type="audio/mpeg">
-  </audio>
-
   <div class="balloons">
     <div class="balloon">🎈</div>
     <div class="balloon">🎈</div>
@@ -10,7 +6,11 @@
   </div>
 
   <h1>Happy Birthday Pari! 🥳</h1>
-  <a href="password.html" class="next-btn">🎁 Tap to continue</a>
+  <a href="password.html" class="next-btn" onclick="playMusic()">🎁 Tap to continue</a>
+
+  <audio id="bg-music" loop>
+    <source src="soft.mp3" type="audio/mpeg">
+  </audio>
 
   <style>
     body {
@@ -86,4 +86,11 @@
       }
     }
   </style>
+
+  <script>
+    function playMusic() {
+      document.getElementById("bg-music").play();
+    }
+  </script>
 </body>
+
