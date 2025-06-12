@@ -1,49 +1,89 @@
+<body>
+  <audio autoplay loop>
+    <source src="soft.mp3" type="audio/mpeg">
+  </audio>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Happy Birthday Pari</title>
+  <div class="balloons">
+    <div class="balloon">🎈</div>
+    <div class="balloon">🎈</div>
+    <div class="balloon">🎈</div>
+  </div>
+
+  <h1>Happy Birthday Pari! 🥳</h1>
+  <a href="password.html" class="next-btn">🎁 Tap to continue</a>
+
   <style>
     body {
       margin: 0;
-      overflow: hidden;
+      padding: 0;
+      background: linear-gradient(to bottom, #c2f0ff, #ffe6f0);
       height: 100vh;
-      background: linear-gradient(to top, #ffdee9, #b5fffc);
       display: flex;
-      align-items: center;
+      flex-direction: column;
       justify-content: center;
-      font-family: 'Segoe UI', sans-serif;
+      align-items: center;
+      font-family: 'Arial', sans-serif;
+      overflow: hidden;
     }
+
+    h1 {
+      font-size: 2.5rem;
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    .next-btn {
+      background-color: #ff69b4;
+      padding: 12px 24px;
+      border-radius: 30px;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+    }
+
+    .next-btn:hover {
+      background-color: #e754a5;
+    }
+
+    .balloons {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
+
     .balloon {
       position: absolute;
-      bottom: -100px;
-      width: 50px;
-      height: 70px;
-      background-color: pink;
-      border-radius: 50% 50% 45% 45%;
-      animation: float 10s infinite ease-in;
+      bottom: -150px;
+      font-size: 40px;
+      animation: float 6s ease-in-out infinite;
     }
+
+    .balloon:nth-child(1) {
+      left: 25%;
+      animation-delay: 0s;
+    }
+
+    .balloon:nth-child(2) {
+      left: 50%;
+      animation-delay: 2s;
+    }
+
+    .balloon:nth-child(3) {
+      left: 75%;
+      animation-delay: 4s;
+    }
+
     @keyframes float {
-      0% { transform: translateY(0); }
-      100% { transform: translateY(-110vh); }
-    }
-    h1 {
-      font-size: 2em;
-      color: #444;
-      z-index: 2;
-      position: relative;
+      0% {
+        transform: translateY(0);
+      }
+      100% {
+        transform: translateY(-120vh);
+      }
     }
   </style>
-</head>
-<body>
-  <audio autoplay loop>
-    <source src="soft.mp3" type="audio/mp3">
-  </audio>
-  <h1>🎈 Happy Birthday Pari! 🎈</h1>
-  <div class="balloon" style="left:20%; animation-delay: 0s;"></div>
-  <div class="balloon" style="left:40%; background-color: #fbb1bd; animation-delay: 2s;"></div>
-  <div class="balloon" style="left:60%; background-color: #ffc0cb; animation-delay: 4s;"></div>
 </body>
-</html>
