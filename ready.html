@@ -3,60 +3,66 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Ready?</title>
+  <title>Password Page</title>
   <style>
     body {
-      margin: 0;
-      padding: 0;
-      background: linear-gradient(to bottom right, #f9f9ff, #ffe0f0);
+      background: linear-gradient(to top, #ffe1e1, #e0f7fa);
       display: flex;
-      flex-direction: column;
       justify-content: center;
       align-items: center;
       height: 100vh;
       font-family: 'Comic Sans MS', cursive;
+      flex-direction: column;
     }
 
-    h1 {
-      font-size: 2.5rem;
-      color: #ff4081;
-      margin-bottom: 40px;
+    h2 {
+      color: #444;
+      margin-bottom: 20px;
     }
 
-    .btn {
-      padding: 15px 30px;
-      margin: 10px;
-      border: none;
-      border-radius: 20px;
+    input {
+      padding: 10px;
       font-size: 18px;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      outline: none;
+    }
+
+    button {
+      margin-top: 15px;
+      padding: 10px 25px;
+      font-size: 16px;
+      background-color: #ff8fa3;
+      color: white;
+      border: none;
+      border-radius: 10px;
       cursor: pointer;
+    }
+
+    .error {
+      margin-top: 10px;
+      color: red;
       font-weight: bold;
-      transition: transform 0.2s ease;
-    }
-
-    .yes {
-      background-color: #4caf50;
-      color: white;
-    }
-
-    .no {
-      background-color: #f44336;
-      color: white;
-      position: absolute;
     }
   </style>
 </head>
 <body>
-  <h1>READY?😄</h1>
-  <button class="btn yes" onclick="window.location.href='countdown.html'">YES</button>
-  <button class="btn no" onclick="moveButton(this)">NO</button>
+  <h2>Guess the Password 
+    (Hint- The word you used most😂💬</h2>
+  <input type="text" id="passwordInput" placeholder="Enter the word..." />
+  <button onclick="checkPassword()">Submit</button>
+  <div class="error" id="errorMsg"></div>
 
   <script>
-    function moveButton(btn) {
-      const x = Math.random() * (window.innerWidth - 100);
-      const y = Math.random() * (window.innerHeight - 50);
-      btn.style.left = x + 'px';
-      btn.style.top = y + 'px';
+    function checkPassword() {
+      const password = document.getElementById("passwordInput").value.trim().toLowerCase();
+      const errorMsg = document.getElementById("errorMsg");
+
+      if (password === "hm") {
+        window.location.href = "ready.html";
+      } else {
+        errorMsg.textContent = "Ye Galat Hai... Sahi word Socho😂";
+      }
     }
   </script>
 </body>
