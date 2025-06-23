@@ -3,70 +3,65 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Surprise!</title>
+  <title>Countdown Surprise</title>
   <style>
     body {
       margin: 0;
       padding: 0;
-      background: linear-gradient(to top left, #ffe0f7, #d0f0ff);
+      height: 100vh;
+      background: url('https://i.pinimg.com/originals/f4/40/1c/f4401cb2a9177a89b153431e00f63f45.gif') center/cover no-repeat;
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
-      flex-direction: column;
-      height: 100vh;
       font-family: 'Comic Sans MS', cursive;
+      color: #fff;
+      text-shadow: 1px 1px 3px #000;
       text-align: center;
     }
 
-    #countdown {
-      font-size: 5rem;
-      color: #ff4081;
+    h1 {
+      font-size: 2.5em;
       margin-bottom: 20px;
     }
 
-    #message {
-      display: none;
-      font-size: 2rem;
-      color: #4caf50;
-      margin-top: 30px;
-      line-height: 1.5;
+    #countdown {
+      font-size: 6em;
+      color: #ff4081;
+      animation: pulse 1s infinite;
     }
 
-    #cake {
-      display: none;
-      width: 250px;
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+
+    p {
+      font-size: 1.5em;
       margin-top: 20px;
-      border-radius: 20px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
     }
   </style>
 </head>
 <body>
+  <h1>Get Ready Pari Sharma 😍</h1>
   <div id="countdown">15</div>
-  <img id="cake" src="cake.jpg" alt="Cake" />
-  <div id="message">🎉 Happy Birthday Pari! 🎂🥳<br>I hope your day is as amazing as your smile.</div>
-
-  <audio id="birthday-music" src="happy.mp3" preload="auto"></audio>
+  <p>Something beautiful is coming just for you...</p>
 
   <script>
     window.onload = function () {
       let count = 15;
       const countdownElement = document.getElementById("countdown");
-      const message = document.getElementById("message");
-      const cake = document.getElementById("cake");
-      const music = document.getElementById("birthday-music");
-
       countdownElement.textContent = count;
 
       const interval = setInterval(() => {
         count--;
         countdownElement.textContent = count;
+
         if (count === 0) {
           clearInterval(interval);
-          countdownElement.style.display = "none";
-          cake.style.display = "block";
-          message.style.display = "block";
-          music.play();
+          // Redirect to surprise.html
+          window.location.href = "surprise.html";
         }
       }, 1000);
     };
