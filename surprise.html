@@ -1,60 +1,143 @@
-
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Surprise!</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Birthday Pari 🎂</title>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
   <style>
     body {
-      background-color: #ffe4f0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      height: 100vh;
-      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      font-family: 'Pacifico', cursive;
+      background: linear-gradient(to bottom, #ffe0f0, #fff4e6);
+      overflow: hidden;
       text-align: center;
-    }
-    #countdown {
-      font-size: 3em;
-      margin-bottom: 20px;
-    }
-    #message, #cake, audio {
-      display: none;
-    }
-    #cake {
-      width: 300px;
-      margin: 20px auto;
-    }
+    }.container {
+  padding: 20px;
+}
+
+.title {
+  font-size: 2em;
+  margin-top: 20px;
+  color: #d63384;
+}
+
+.cake {
+  width: 200px;
+  margin: 20px auto;
+  position: relative;
+}
+
+.cake img {
+  width: 100%;
+}
+
+.button {
+  background: #ff66a3;
+  border: none;
+  padding: 15px 25px;
+  color: white;
+  font-size: 1.2em;
+  border-radius: 12px;
+  cursor: pointer;
+  margin: 10px;
+  transition: background 0.3s;
+}
+
+.button:hover {
+  background: #ff4081;
+}
+
+.message {
+  margin-top: 20px;
+  font-size: 1.3em;
+  color: #6a0572;
+  display: none;
+}
+
+.confetti, .fireworks, .stars {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  top: 0;
+  left: 0;
+  display: none;
+}
+
+.teddy {
+  width: 150px;
+  margin: 20px auto;
+  display: none;
+}
+
+.stars span {
+  position: absolute;
+  font-size: 24px;
+  color: gold;
+  animation: floatStars 4s infinite;
+}
+
+@keyframes floatStars {
+  0% {transform: translateY(0); opacity: 1;}
+  100% {transform: translateY(-300px); opacity: 0;}
+}
+
   </style>
 </head>
 <body>
-  <div id="countdown">15</div>
-  <img id="cake" src="cake.jpg" alt="Cake"/>
-  <h1 id="message">🎂 Happy Birthday Pari! 🥳<br>I hope your day is as amazing as your smile.</h1>
-  <audio id="music" autoplay>
-    <source src="happy.mp3" type="audio/mp3">
-  </audio>
+  <audio id="bg-music" src="https://cdn.pixabay.com/audio/2022/03/23/audio_7c6f730eb7.mp3" loop></audio>  <div class="container">
+    <div class="title">Let’s cut the cake, Pari Sharma 🎂</div>
+    <div class="cake">
+      <img src="https://i.postimg.cc/DZCzPnC3/cake-with-candles.png" alt="Birthday Cake" id="cake-img" />
+    </div>
+    <button class="button" onclick="cutCake()">Cut the Cake 🎂</button>
+    <div class="message" id="wish-msg"></div>
+    <img src="https://i.postimg.cc/fy8SNRxN/cute-teddy.png" class="teddy" id="teddy" />
+    <button class="button" id="wish-btn" style="display:none" onclick="makeWish()">Make a Wish ✨</button>
+    <button class="button" id="end-btn" style="display:none" onclick="theEnd()">The End ❤️</button>
+  </div>  <div class="confetti" id="confetti">🎉🎊🎉</div>
+  <div class="fireworks" id="fireworks">🎆🎇</div>
+  <div class="stars" id="stars"></div>  <script>
+    let musicStarted = false;
 
-  <script>
-    let timeLeft = 15;
-    const countdownEl = document.getElementById("countdown");
-    const cake = document.getElementById("cake");
-    const message = document.getElementById("message");
-    const music = document.getElementById("music");
-
-    const timer = setInterval(() => {
-      timeLeft--;
-      countdownEl.textContent = timeLeft;
-      if (timeLeft === 0) {
-        clearInterval(timer);
-        countdownEl.style.display = "none";
-        cake.style.display = "block";
-        message.style.display = "block";
-        music.play();
+    document.body.addEventListener('click', () => {
+      if (!musicStarted) {
+        document.getElementById('bg-music').play();
+        musicStarted = true;
       }
-    }, 1000);
-  </script>
-</body>
+    });
+
+    function cutCake() {
+      const cake = document.getElementById('cake-img');
+      cake.src = 'https://i.postimg.cc/VvMxpkzG/cake-cut.png';
+
+      document.getElementById('confetti').style.display = 'block';
+      document.getElementById('fireworks').style.display = 'block';
+      document.getElementById('teddy').style.display = 'block';
+      document.getElementById('wish-msg').style.display = 'block';
+      document.getElementById('wish-msg').innerText = `Happy Birthday, Pari Sharma ❤️\nThis cake was made with love... and maybe a little crush 😅`;
+      document.getElementById('wish-btn').style.display = 'inline-block';
+    }
+
+    function makeWish() {
+      const stars = document.getElementById('stars');
+      stars.style.display = 'block';
+      for (let i = 0; i < 20; i++) {
+        const star = document.createElement('span');
+        star.innerText = '⭐';
+        star.style.left = Math.random() * 100 + '%';
+        star.style.top = '90%';
+        stars.appendChild(star);
+        setTimeout(() => star.remove(), 4000);
+      }
+      document.getElementById('wish-msg').innerText = 'I hope all your dreams come true… Especially the one you just made 😉';
+      document.getElementById('wish-btn').style.display = 'none';
+      document.getElementById('end-btn').style.display = 'inline-block';
+    }
+
+    function theEnd() {
+      alert('Thanks for making it till the end ❤️\nHope this brought a smile to your face 🙂');
+    }
+  </script></body>
 </html>
